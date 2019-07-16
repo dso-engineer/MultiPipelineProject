@@ -2,19 +2,35 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout RAVE') {
             steps {
-                echo 'Building on F-1...'
+                echo 'Checkout RAVE'
             }
         }
-        stage('Test') {
+        stage('Start Build Notification') {
             steps {
-                echo 'Testing on F-1...'
+                echo 'Send Slack Message'
             }
         }
-        stage('Deploy') {
+        stage('Compile RAVE') {
             steps {
-                echo 'Deploying on F-1...'
+                echo 'Run a Windows Batch Script'
+            }
+        }
+        stage('Archive') {
+            steps {
+                echo 'Checks if running on a Unix-like node'
+            }
+        }
+        stage('Post Build Notification') {
+            steps {
+                echo 'Send Slack Message'
+            }
+        }
+        stage('Clean Up Workspace') {
+            steps {
+                echo 'Checks if running on a Unix-like node'
+                echo 'Delete workspace when build is done'
             }
         }
     }
