@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout RAVE') {
             steps {
-                echo 'Checkout RAVE'
+                echo 'Checkout from version control'
             }
         }
         stage('Start Build Notification') {
