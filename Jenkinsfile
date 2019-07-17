@@ -27,5 +27,10 @@ pipeline {
                 echo 'Send Slack Message'
             }
         }
+        stage('Last stage') {
+            steps {
+                echo 'last part'
+            }
+        }
     }
 }
