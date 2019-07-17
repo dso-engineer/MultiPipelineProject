@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout RAVE') {
+            steps {
+                echo 'Checkout RAVE'
+            }
+        }
+        stage('Start Build Notification') {
+            steps {
+                echo 'Start Build Notification'
+            }
+        }
+        stage('Compile RAVE') {
+            steps {
+                echo 'Compile RAVE'
+            }
+        }
+        stage('Archive') {
+            steps {
+                echo 'Archive'
+            }
+        }
+        stage('Post Build Notification') {
+            steps {
+                echo 'Post Build Notification'
+            }
+        }
+        stage('Clean Up Workspace') {
+            steps {
+                echo 'Clean Up Workspace'
+            }
+        }
+    }
+}
