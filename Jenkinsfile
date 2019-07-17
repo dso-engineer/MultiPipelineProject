@@ -27,11 +27,11 @@ pipeline {
                 echo 'Send Slack Message'
             }
         }
-        stage('Clean Up Workspace') {
-            steps {
-                echo 'Checks if running on a Unix-like node'
-                echo 'Delete workspace when build is done'
-            }
-        }
+#        stage('Clean Up Workspace') {
+#            steps {
+#                echo 'Checks if running on a Unix-like node'
+#                echo 'Delete workspace when build is done'
+#            }
+#        }
     }
 }
