@@ -2,19 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout RAVE') {
             steps {
-                echo 'Building on THE master...'
+                echo 'Checkout from version control'
             }
         }
-        stage('Test') {
+        stage('Start Build Notification') {
             steps {
-                echo 'Testing on THE master...'
+                echo 'Send Slack Message'
             }
         }
-        stage('Deploy') {
+        stage('Compile RAVE') {
             steps {
-                echo 'Deploying on THE master...'
+                echo 'Run a Windows Batch Script'
+            }
+        }
+        stage('Archive') {
+            steps {
+                echo 'Checks if running on a Unix-like node'
+            }
+        }
+        stage('Post Build Notification') {
+            steps {
+                echo 'Send Slack Message'
             }
         }
     }
