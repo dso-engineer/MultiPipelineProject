@@ -1,36 +1,17 @@
-pipeline {
-    agent any
+node {
+    stage "Create build output"
+    
+    // Make the output directory.
+    sh "mkdir -p output"
 
-    stages {
-        stage('Checkout RAVE') {
-            steps {
-                echo 'Checkout from version control'
-            }
-        }
-        stage('Start Build Notification') {
-            steps {
-                echo 'Send Slack Message'
-            }
-        }
-        stage('Compile RAVE') {
-            steps {
-                echo 'Run a Windows Batch Script'
-            }
-        }
-        stage('Archive') {
-            steps {
-                echo 'Checks if running on a Unix-like node'
-            }
-        }
-        stage('Post Build Notification') {
-            steps {
-                echo 'Send Slack Message'
-            }
-        }
-        stage('Last stage') {
-            steps {
-                echo 'last part'
-            }
-        }
-    }
+    // Write an useful file, which is needed to be archived.
+    writeFile file: "output/usefulfile.txt", text: "This file is useful, need to archive it."
+
+    // Write an useless file, which is not needed to be archived.
+    writeFile file: "output/uselessfile.md", text: "This file is useless, no need to archive it."
+
+    stage "Archive build output"
+    
+    // Archive the build output artifacts.
+    archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
 }
