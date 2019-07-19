@@ -13,5 +13,6 @@ node {
     stage "Archive build output"
     
     // Archive the build output artifacts.
+    isUnix(false)
     archiveArtifacts artifacts: 'output/*.txt', excludes: 'output/*.md'
 }
